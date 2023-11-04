@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Body from "./components/Body";
+import "bootstrap/dist/css/bootstrap.css";
+import "./css/App.css";
+import { BrowserRouter } from "react-router-dom";
+import { HashLink as link } from "react-router-hash-link";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App container-fluid">
+        <Header />
+        <Body />
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,20 @@
+.team-container{
+    height: auto;
+    min-width: 50%;
+    width: 85%;
+}
+
+.team-member{
+    width: auto;
+    height: auto;
+    align-items: center;
+    justify-content: start;
+    margin: 0%;
+    padding: 0%;
+}
+
+.img-member{
+    height: 60%;
+    width: 100%;
+    margin: 0%;
+}

@@ -1,0 +1,19 @@
+.login-container{
+    width: auto;
+    height: auto;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+.otp-container{
+    /* justify-content: center; */
+    align-items: center;
+    width: auto;
+    height: auto;
+}
+
+.spinner-conatiner{
+    width: 1rem;
+    height: 1rem;
+}

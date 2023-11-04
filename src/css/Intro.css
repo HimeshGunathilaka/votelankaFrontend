@@ -1,0 +1,22 @@
+.grid-item{
+    /* background-color: blueviolet; */
+    height: 25em;
+}
+
+.btn-vote{
+    width: 150px;
+    height: 40px;
+    margin: 0%;
+    padding: 0%;
+}
+
+.img-intro{
+    width: auto;
+    height: auto;
+}
+
+.img-icon{
+    width: auto;
+    height: 70px;
+    rotate: -30deg;
+}

@@ -1,0 +1,10 @@
+.candidate{
+    width: 200px;
+    height: auto;
+    align-items: center;
+}
+
+.img-candidate{
+    width: 90%;
+    height: 40%;
+}

@@ -1,0 +1,9 @@
+.heading{
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5em;
+}
+
+.navbar{
+    background-color: #272829;
+}

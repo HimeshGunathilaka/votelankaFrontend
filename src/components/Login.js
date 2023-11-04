@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import OtpInput from "otp-input-react";
 import "../css/Login.css";
 import Vote from "./Vote";
@@ -6,8 +6,10 @@ import { auth } from "./Firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { Toast } from "bootstrap";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 function Login() {
+  //don't forget to set user to 'null' or '1' before using it for final design
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
@@ -20,6 +22,12 @@ function Login() {
   const [warningPhone, setWarningPhone] = useState("");
   const [warningIdState, setWarningIdState] = useState("d-none");
   const [warningPhoneState, setWarningPhoneState] = useState("d-none");
+  const [voters, setVoters] = useState([]);
+  const [voter, setVoter] = useState("");
+
+  useEffect(() => {
+    loadVoters();
+  }, []);
 
   const sendOtp = () => {
     const appVerifier = window.recaptchaVerifier;
@@ -65,6 +73,11 @@ function Login() {
     }
   };
 
+  const loadVoters = async () => {
+    const results = await axios.get("http://localhost:8080/user/*");
+    setVoters(results.data);
+  };
+
   const onSignup = () => {
     if (phone === "" && idNumber === "") {
       setWarningPhoneState("d-flex");
@@ -80,10 +93,32 @@ function Login() {
       setWarningPhoneState("d-none");
       setWarningId("Id number is empty");
     } else {
+      setUser(1);
       setWarningPhoneState("d-none");
       setWarningIdState("d-none");
       //empty check validation is done from here
       // if(!/\S+@\S+\.\S+/.test(email)){} you can check for email type string using this regular expression
+      for (var item in voters) {
+        if (
+          voters[item].idNumber === idNumber &&
+          voters[item].phone === phone
+        ) {
+          setVoter({
+            id: voters[item].id,
+            name: voters[item].name,
+            idNumber: voters[item].idNumber,
+            phone: voters[item].phone,
+            area: voters[item].area,
+          });
+          break;
+        }
+      }
+
+      if (voter === "") {
+        console.log(voter);
+      } else {
+        // console.log(voter);
+      }
     }
 
     // onCaptchaVerify();
@@ -120,7 +155,7 @@ function Login() {
       <Toaster duration={4000} />
       <div id="recaptcha-container"></div>
       {user ? (
-        <Vote />
+        <Vote name={voter.name} />
       ) : (
         <div className="container-fluid d-flex flex-column mt-5 justify-content-center align-items-center">
           <h2 className={`text-white mb-5 ${loginHide}`}>Registration form</h2>

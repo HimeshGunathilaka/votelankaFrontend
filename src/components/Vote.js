@@ -1,12 +1,9 @@
-import React from "react";
 import "../css/Vote.css";
 import Candidate from "./Candidate.js";
 import Party from "./Party.js";
-import Party_2 from "../images/party_2.jpg";
-import Party_3 from "../images/party_3.jpg";
-import Party_4 from "../images/party_4.jpg";
+import Party_1 from "../images/party_1.jpg";
 
-function Vote() {
+function Vote(props) {
   return (
     <>
       <div
@@ -17,7 +14,7 @@ function Vote() {
         <div className="container-xxl rounded py-5 my-3 shadow-lg d-flex flex-column bg-dark">
           <div className="container-fluid row row-cols-2">
             <div className="container-fluid  d-flex flex-column justify-content-start mb-5">
-              <h1 className="h1 text-success">Welcome, Himesh !</h1>
+              <h1 className="h1 text-success">Welcome, {props.name} !</h1>
               <p className="text-light-emphasis fs-4 mb-5">
                 Identity card number : 8524562v
               </p>
@@ -43,38 +40,16 @@ function Vote() {
               <div className="col party-container rounded-pill shadow d-flex flex-row py-5">
                 <div className="container-fluid d-flex flex-column row-gap-3 party-holder">
                   <Party />
-                  <div className="container-sm d-flex flex-column">
+                  {/* <div className="container-sm d-flex flex-column">
                     <div className="party container-sm shadow-sm rounded-circle btn btn-outline-success px-2 py-2">
                       <img
-                        src={Party_2}
+                        src={Party_1}
                         alt="party 02"
                         className="rouned-circle img-fluid party-image"
                       ></img>
                     </div>
                     <p className="text-center text-success fs-6 mt-2">UNP</p>
-                  </div>
-
-                  <div className="container-sm d-flex flex-column">
-                    <div className="party container-sm shadow-sm rounded-circle btn btn-outline-success px-2 py-2">
-                      <img
-                        src={Party_3}
-                        alt="party 03"
-                        className="rouned-circle img-fluid party-image"
-                      ></img>
-                    </div>
-                    <p className="text-center text-success fs-6 mt-2">SLFP</p>
-                  </div>
-
-                  <div className="container-sm d-flex flex-column">
-                    <div className="party container-sm shadow-sm rounded-circle btn btn-outline-success px-2 py-2">
-                      <img
-                        src={Party_4}
-                        alt="party 04"
-                        className="rouned-circle img-fluid party-image"
-                      ></img>
-                    </div>
-                    <p className="text-center text-success fs-6 mt-2">JVP</p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

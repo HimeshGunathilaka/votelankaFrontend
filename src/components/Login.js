@@ -7,6 +7,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { Toast } from "bootstrap";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import { loadState, setState } from "../storage/sessions.js";
 
 function Login() {
   //don't forget to set user to 'null' or '1' before using it for final design
@@ -31,8 +32,9 @@ function Login() {
 
   const sendOtp = () => {
     const appVerifier = window.recaptchaVerifier;
-    const formatPh = "+94" + phone.target.value;
-    console.log("+94" + phone.target.value);
+    // const formatPh = "+94" + phone.target.value;
+    const formatPh = "+94" + phone;
+    console.log("+94" + phone);
 
     signInWithPhoneNumber(auth, formatPh, appVerifier)
       .then((confirmationResult) => {
@@ -93,7 +95,6 @@ function Login() {
       setWarningPhoneState("d-none");
       setWarningId("Id number is empty");
     } else {
-      setUser(1);
       setWarningPhoneState("d-none");
       setWarningIdState("d-none");
       //empty check validation is done from here
@@ -114,15 +115,15 @@ function Login() {
         }
       }
 
-      if (voter === "") {
-        console.log(voter);
+      if (voter.name === undefined) {
+        toast.error("Sorry, we couldn't find your account !");
       } else {
-        // console.log(voter);
+        toast.success("You have logged in successfully !");
+        onCaptchaVerify();
+        sendOtp();
+        // setUser(1);
       }
     }
-
-    // onCaptchaVerify();
-    // sendOtp();
   };
 
   const onOtpVerify = () => {
@@ -188,6 +189,9 @@ function Login() {
               <div className="mb-3">
                 <label htmlFor="usernumber" className="form-label">
                   Your phone number
+                  <span className="text-secondary text-example ms-3">
+                    ( Ex : +94771234567 )
+                  </span>
                 </label>
                 <div className="input-group">
                   <span className="input-group-text" id="basic-addon3">

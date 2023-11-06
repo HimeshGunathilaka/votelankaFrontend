@@ -138,14 +138,14 @@ function Login() {
 
         //for you to understand and try the application i'm setting up a user. keep in mind above two functions are called when
         //application runs not these steps. *** because of i'm setting up a user manually, otp verification process will be hidden. ***
-        setVoter({
-          id: voters[item].id,
-          name: voters[item].name,
-          idNumber: voters[item].idNumber,
-          phone: voters[item].phone,
-          area: voters[item].area,
-        });
-        setUser(1);
+        // setVoter({
+        //   id: voters[item].id,
+        //   name: voters[item].name,
+        //   idNumber: voters[item].idNumber,
+        //   phone: voters[item].phone,
+        //   area: voters[item].area,
+        // });
+        // setUser(1);
       }
     }
   };

@@ -70,6 +70,19 @@ export default function Header() {
                   About
                 </a>
               </li>
+              <li className="nav-item mx-4">
+                <a
+                  id="header-admin"
+                  className="nav-link"
+                  // style={textColor}
+                  onMouseEnter={(e) => handleHover(e)}
+                  onMouseLeave={(e) => handleHover(e)}
+                  aria-current="page"
+                  href="#admin"
+                >
+                  Admin
+                </a>
+              </li>
             </ul>
           </div>
         </div>

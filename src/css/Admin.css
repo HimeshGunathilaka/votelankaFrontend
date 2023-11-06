@@ -1,0 +1,7 @@
+.admin-container{
+    width: auto;
+    height: auto;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}

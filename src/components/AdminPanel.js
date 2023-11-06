@@ -17,9 +17,15 @@ function AdminPanel() {
 
   useEffect(() => {
     loadCandidates();
-    loadAreas();
+  }, [candidates]);
+
+  useEffect(() => {
     loadParties();
-  }, []);
+  }, [parties]);
+
+  useEffect(() => {
+    loadAreas();
+  }, [areas]);
 
   const loadCandidates = async () => {
     const results = await axios.get("http://localhost:8080/candidate/*");

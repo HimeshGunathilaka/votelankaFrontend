@@ -11,6 +11,7 @@ import { loadState, setState } from "../storage/sessions.js";
 
 function Login() {
   //don't forget to set user to 'null' or '1' before using it for final design
+  //decleration of variables
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
@@ -26,10 +27,12 @@ function Login() {
   const [voters, setVoters] = useState([]);
   const [voter, setVoter] = useState("");
 
+  //runs after setVoters is finished
   useEffect(() => {
     loadVoters();
   }, []);
 
+  //sends otp to voter's phone
   const sendOtp = () => {
     const appVerifier = window.recaptchaVerifier;
     // const formatPh = "+94" + phone.target.value;
@@ -54,6 +57,7 @@ function Login() {
       });
   };
 
+  //captcha verification process starts from here
   const onCaptchaVerify = () => {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -75,12 +79,14 @@ function Login() {
     }
   };
 
+  //fetches users list in the database to Voters list
   const loadVoters = async () => {
     const results = await axios.get("http://localhost:8080/user/*");
     setVoters(results.data);
   };
 
   const onSignup = () => {
+    //validation process starts from here
     if (phone === "" && idNumber === "") {
       setWarningPhoneState("d-flex");
       setWarningPhone("Phone number is empty");
@@ -99,11 +105,15 @@ function Login() {
       setWarningIdState("d-none");
       //empty check validation is done from here
       // if(!/\S+@\S+\.\S+/.test(email)){} you can check for email type string using this regular expression
+
+      //checks voter's identity by comparing voter's id number and phone number with data in the database
       for (var item in voters) {
         if (
           voters[item].idNumber === idNumber &&
           voters[item].phone === phone
         ) {
+          //voter's identity confirmed
+          //sets voter by calling setVoter function
           setVoter({
             id: voters[item].id,
             name: voters[item].name,
@@ -115,17 +125,19 @@ function Login() {
         }
       }
 
+      //shows otp confirmation to voter after confirming his / her identity
       if (voter.name === undefined) {
         toast.error("Sorry, we couldn't find your account !");
       } else {
         toast.success("You have logged in successfully !");
+        //otp confirmation process starts from here
         onCaptchaVerify();
         sendOtp();
-        // setUser(1);
       }
     }
   };
 
+  //user can submit his / her given otp to otp conformation form and verify it
   const onOtpVerify = () => {
     setLoading(true);
     window.confirmationResult
@@ -136,6 +148,8 @@ function Login() {
         setLoading(false);
         toast.success("OTP verified successfully !");
         setOtpHide("d-none");
+
+        //otp verification process is done , now user can vote
         setUser(1);
       })
       .catch((error) => {

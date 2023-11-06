@@ -16,7 +16,7 @@ function Vote(props) {
             <div className="container-fluid  d-flex flex-column justify-content-start mb-5">
               <h1 className="h1 text-success">Welcome, {props.name} !</h1>
               <p className="text-light-emphasis fs-4 mb-5">
-                Identity card number : 8524562v
+                Identity card number : {props.idNumber}
               </p>
               <p className="text-secondary text-hint">
                 * This is your voting area. make sure to use all your votes

@@ -129,10 +129,23 @@ function Login() {
       if (voter.name === undefined) {
         toast.error("Sorry, we couldn't find your account !");
       } else {
-        toast.success("You have logged in successfully !");
+        toast.success("Your identity was confirmed !");
         //otp confirmation process starts from here
-        onCaptchaVerify();
-        sendOtp();
+        //i have commented below function calls because ,firebase request limit per day is 25. so if we ran out of function calls
+        //we will not be able to complete other processes. keep in mind when application runs bellow two functions are called.
+        // onCaptchaVerify();
+        // sendOtp();
+
+        //for you to understand and try the application i'm setting up a user. keep in mind above two functions are called when
+        //application runs not these steps. *** because of i'm setting up a user manually, otp verification process will be hidden. ***
+        setVoter({
+          id: voters[item].id,
+          name: voters[item].name,
+          idNumber: voters[item].idNumber,
+          phone: voters[item].phone,
+          area: voters[item].area,
+        });
+        setUser(1);
       }
     }
   };
@@ -146,7 +159,7 @@ function Login() {
         console.log(res);
         // setUser(res.user);
         setLoading(false);
-        toast.success("OTP verified successfully !");
+        toast.success("You have logged in successfully !");
         setOtpHide("d-none");
 
         //otp verification process is done , now user can vote
@@ -155,7 +168,7 @@ function Login() {
       .catch((error) => {
         // User couldn't sign in (bad verification code?)
         console.log(error);
-        toast.error("OTP verification failed !");
+        toast.error("Sorry, OTP you submitted couldn't be verified !");
         setLoading(false);
       });
   };
@@ -170,7 +183,7 @@ function Login() {
       <Toaster duration={4000} />
       <div id="recaptcha-container"></div>
       {user ? (
-        <Vote name={voter.name} />
+        <Vote name={voter.name} idNumber={voter.idNumber} />
       ) : (
         <div className="container-fluid d-flex flex-column mt-5 justify-content-center align-items-center">
           <h2 className={`text-white mb-5 ${loginHide}`}>Registration form</h2>

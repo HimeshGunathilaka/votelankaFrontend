@@ -6,9 +6,10 @@ import Fahma from "../images/fahma.jpg";
 import Shashi from "../images/shashi.jpg";
 import { useState } from "react";
 
+// *** candidate was removed from vote
 let voteCount = 0;
 let indexes = [];
-function Candidate() {
+function Candidate(party) {
   const list = [
     { id: "1", name: "Clark Kent", image: Himesh },
     { id: "2", name: "Diana", image: Dinesha },

@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import Party_1 from "../images/party_1.jpg";
 import axios from "axios";
 
+//*** party was removed from vote
 function Party() {
   const [parties, setParties] = useState([]);
 
   useEffect(() => {
     loadParties();
-  }, []);
+  }, [parties]);
 
   const loadParties = async () => {
-    const results = await axios.get("http://localhost:8080/party/*");
-    setParties(results.data);
+    try {
+      const results = await axios.get("http://localhost:8080/party/*");
+      setParties(results.data);
+    } catch (error) {
+      console.log(error);
+    }
     // console.log(results.data);
   };
 

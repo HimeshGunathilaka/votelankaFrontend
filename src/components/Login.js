@@ -30,7 +30,7 @@ function Login() {
   //runs after setVoters is finished
   useEffect(() => {
     loadVoters();
-  }, []);
+  }, [voters]);
 
   //sends otp to voter's phone
   const sendOtp = () => {
@@ -81,8 +81,12 @@ function Login() {
 
   //fetches users list in the database to Voters list
   const loadVoters = async () => {
-    const results = await axios.get("http://localhost:8080/user/*");
-    setVoters(results.data);
+    try {
+      const results = await axios.get("http://localhost:8080/user/*");
+      setVoters(results.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onSignup = () => {
@@ -145,7 +149,7 @@ function Login() {
         //   phone: voters[item].phone,
         //   area: voters[item].area,
         // });
-        // setUser(1);
+        setUser(1);
       }
     }
   };

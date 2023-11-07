@@ -2,8 +2,125 @@ import "../css/Vote.css";
 import Candidate from "./Candidate.js";
 import Party from "./Party.js";
 import Party_1 from "../images/party_1.jpg";
+import Himesh from "../images/himesh.jpg";
+import Dinesha from "../images/dinesha.jpg";
+import Fahma from "../images/fahma.jpg";
+import Shashi from "../images/shashi.jpg";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
+let voteCount = 0;
+let indexes = [];
 function Vote(props) {
+  const [parties, setParties] = useState([]);
+  const [party, setParty] = useState("");
+  const [candidates, setCandidates] = useState([]);
+  const [candidate, setCandidate] = useState("");
+  const [processed, setProcessed] = useState(false);
+  const list = [null];
+
+  useEffect(() => {
+    loadParties();
+  }, [parties]);
+
+  useEffect(() => {
+    // list.push({id:candidate[]});
+    console.log(candidate);
+  }, [candidate]);
+
+  useEffect(() => {
+    handlePartyClick();
+  }, [party]);
+
+  useEffect(() => {
+    loadCandidates();
+  }, [candidates]);
+
+  const loadProcessedCandidates = () => {};
+
+  const loadParties = async () => {
+    try {
+      const results = await axios.get("http://localhost:8080/party/*");
+      setParties(results.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loadCandidates = async () => {
+    try {
+      const candidateResults = await axios.get(
+        "http://localhost:8080/candidate/*"
+      );
+      setCandidates(candidateResults.data);
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log(results.data);
+  };
+
+  const handlePartyClick = () => {
+    try {
+      // console.log(party);
+      for (var item in candidates) {
+        if (candidates[item].party === party) {
+          console.log(party);
+          setCandidate({
+            id: candidates[item].id,
+            name: candidates[item].name,
+            party: candidates[item].party,
+            no: candidates[item].no,
+            image: candidates[item].image,
+            area: candidates[item].area,
+            mobileNo: candidates[item].mobileNo,
+          });
+          // list.push({
+          //   id: candidates[item].id,
+          //   name: candidates[item].name,
+          //   image: candidates[item].image,
+          // });
+          // setProcessed(true);
+          // setVoter({
+          //   id: voters[item].id,
+          //   name: voters[item].name,
+          //   idNumber: voters[item].idNumber,
+          //   phone: voters[item].phone,
+          //   area: voters[item].area,
+          // });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleVote = (event, position) => {
+    // const updatedCheckedState = checkedState.map((item, index) =>
+    //   index === position ? !item : item
+    // );
+
+    // setCheckedState(updatedCheckedState);
+    // console.log(updatedCheckedState);
+
+    if (event.target.checked) {
+      // indexes.forEach((i) => console.log("indexes :" + i));
+      voteCount = voteCount + 1;
+      if (voteCount === 3) {
+        indexes.push(position);
+        console.log(indexes.length);
+        alert("You have reached maximum vote count !");
+      } else {
+        indexes.push(position);
+        console.log(indexes.length);
+      }
+    } else {
+      indexes.splice(indexes.indexOf(position), 1);
+      console.log(indexes.length);
+      voteCount = voteCount - 1;
+    }
+
+    // setChecked(!checked);
+  };
   return (
     <>
       <div
@@ -39,17 +156,24 @@ function Vote(props) {
               <h5 className="col h5 text-light">Parties</h5>
               <div className="col party-container rounded-pill shadow d-flex flex-row py-5">
                 <div className="container-fluid d-flex flex-column row-gap-3 party-holder">
-                  <Party />
-                  {/* <div className="container-sm d-flex flex-column">
-                    <div className="party container-sm shadow-sm rounded-circle btn btn-outline-success px-2 py-2">
-                      <img
-                        src={Party_1}
-                        alt="party 02"
-                        className="rouned-circle img-fluid party-image"
-                      ></img>
+                  {parties.map((party, index) => (
+                    <div
+                      key={index}
+                      className="container-sm d-flex flex-column"
+                    >
+                      <div className="party container-sm shadow-sm rounded-circle btn btn-outline-success px-2 py-2">
+                        <img
+                          src={Party_1}
+                          alt="party 01"
+                          className="rouned-circle img-fluid party-image"
+                          onClick={(e) => setParty(party.name)}
+                        ></img>
+                      </div>
+                      <p className="text-center text-success fs-6 mt-2">
+                        {party.name}
+                      </p>
                     </div>
-                    <p className="text-center text-success fs-6 mt-2">UNP</p>
-                  </div> */}
+                  ))}
                 </div>
               </div>
             </div>
@@ -57,7 +181,65 @@ function Vote(props) {
             <div className="column-right px-3 container d-flex flex-column mt-2">
               <h5 className="h5 text-center text-light">Candidates</h5>
               <div className="candidates-holder d-flex py-3 row row-cols-3 shadow rounded container-fluid">
-                <Candidate />
+                {processed
+                  ? list.map((props, index) => (
+                      <div
+                        key={props.id}
+                        className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
+                      >
+                        <img
+                          src={Shashi}
+                          className="img-fluid img-candidate rounded-circle"
+                        ></img>
+                        <h1 className="fs-5 mt-3">{props.name}</h1>
+                        <h4 className="h4">No : 52</h4>
+
+                        <input
+                          type="checkbox"
+                          className="btn-check"
+                          id={props.name}
+                          autoComplete="off"
+                          // disabled={disable}
+                          // checked={!checkedState}
+                          onChange={(event) => handleVote(event, index)}
+                        ></input>
+                        <label
+                          className="btn btn-outline-primary px-5 mt-3"
+                          htmlFor={props.name}
+                        >
+                          Vote
+                        </label>
+                      </div>
+                    ))
+                  : candidates.map((props, index) => (
+                      <div
+                        key={props.id}
+                        className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
+                      >
+                        <img
+                          src={Shashi}
+                          className="img-fluid img-candidate rounded-circle"
+                        ></img>
+                        <h1 className="fs-5 mt-3">{props.name}</h1>
+                        <h4 className="h4">No : 52</h4>
+
+                        <input
+                          type="checkbox"
+                          className="btn-check"
+                          id={props.name}
+                          autoComplete="off"
+                          // disabled={disable}
+                          // checked={!checkedState}
+                          onChange={(event) => handleVote(event, index)}
+                        ></input>
+                        <label
+                          className="btn btn-outline-primary px-5 mt-3"
+                          htmlFor={props.name}
+                        >
+                          Vote
+                        </label>
+                      </div>
+                    ))}
               </div>
             </div>
           </div>

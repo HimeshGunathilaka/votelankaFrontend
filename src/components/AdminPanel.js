@@ -28,18 +28,30 @@ function AdminPanel() {
   }, [areas]);
 
   const loadCandidates = async () => {
-    const results = await axios.get("http://localhost:8080/candidate/*");
-    setCandidates(results.data);
+    try {
+      const results = await axios.get("http://localhost:8080/candidate/*");
+      setCandidates(results.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const loadParties = async () => {
-    const partyResult = await axios.get("http://localhost:8080/party/*");
-    setParties(partyResult.data);
+    try {
+      const partyResult = await axios.get("http://localhost:8080/party/*");
+      setParties(partyResult.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const loadAreas = async () => {
-    const areaResults = await axios.get("http://localhost:8080/area/*");
-    setAreas(areaResults.data);
+    try {
+      const areaResults = await axios.get("http://localhost:8080/area/*");
+      setAreas(areaResults.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onSubmit = () => {
@@ -66,6 +78,8 @@ function AdminPanel() {
     }
 
     if (candidate.name === undefined) {
+      const formData = new FormData();
+      formData.append();
       toast.success("Data sumbited !");
     } else {
       toast.error("Duplicate found !");
@@ -110,7 +124,7 @@ function AdminPanel() {
                   id="image"
                   name="image"
                   required
-                  onChange={(e) => setImage(e.target.value)}
+                  onChange={(e) => setImage(e.target.files[0])}
                   aria-describedby="basic-addon3 basic-addon4"
                 />
               </div>

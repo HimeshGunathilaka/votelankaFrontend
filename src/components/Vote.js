@@ -2,9 +2,6 @@ import "../css/Vote.css";
 import Candidate from "./Candidate.js";
 import Party from "./Party.js";
 import Party_1 from "../images/party_1.jpg";
-import Himesh from "../images/himesh.jpg";
-import Dinesha from "../images/dinesha.jpg";
-import Fahma from "../images/fahma.jpg";
 import Shashi from "../images/shashi.jpg";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -16,16 +13,15 @@ function Vote(props) {
   let [party, setParty] = useState("all");
   let [candidates, setCandidates] = useState([]);
   const [candidate, setCandidate] = useState("");
-  const [processed, setProcessed] = useState(true);
-  const [processedCandidates, setProcessedCandidates] = useState([]);
-  // const list = [];
+
   let list = candidates.filter((candidate) => {
     if (party === "UNP") {
-      // console.log(party);
       return candidate.party === party;
     } else if (party === "HNF") {
       return candidate.party === party;
     } else if (party === "UPUF") {
+      return candidate.party === party;
+    } else if (party === "JVP") {
       return candidate.party === party;
     } else {
       return candidate;
@@ -36,23 +32,11 @@ function Vote(props) {
     loadParties();
   }, [parties]);
 
-  useEffect(() => {
-    // setProcessed(true);
-    // list.push({id:candidate[]});
-  }, [candidate]);
-
-  useEffect(() => {
-    // handlePartyClick();
-    // console.log(list);
-  }, [party]);
+  useEffect(() => {}, [candidate]);
 
   useEffect(() => {
     loadCandidates();
   }, [candidates]);
-
-  useEffect(() => {
-    setProcessed(true);
-  }, [processedCandidates]);
 
   const loadParties = async () => {
     try {
@@ -72,51 +56,10 @@ function Vote(props) {
     } catch (error) {
       console.log(error);
     }
-    // console.log(results.data);
-  };
-
-  const handlePartyClick = () => {
-    try {
-      // console.log(party);
-      // for (var item in candidates) {
-      //   if (candidates[item].party === party) {
-      //     // console.log(party);
-      //     setCandidate({
-      //       id: candidates[item].id,
-      //       name: candidates[item].name,
-      //       party: candidates[item].party,
-      //       no: candidates[item].no,
-      //       image: candidates[item].image,
-      //       area: candidates[item].area,
-      //       mobileNo: candidates[item].mobileNo,
-      //     });
-      //     list.push({
-      //       id: candidates[item].id,
-      //       name: candidates[item].name,
-      //       image: candidates[item].image,
-      //       no: candidates[item].no,
-      //     });
-      //     // setProcessedCandidates(candidate);
-      //     // console.log(processedCandidates);
-      //     setProcessed(true);
-      //     console.log(list);
-      //   }
-      // }
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const handleVote = (event, position) => {
-    // const updatedCheckedState = checkedState.map((item, index) =>
-    //   index === position ? !item : item
-    // );
-
-    // setCheckedState(updatedCheckedState);
-    // console.log(updatedCheckedState);
-
     if (event.target.checked) {
-      // indexes.forEach((i) => console.log("indexes :" + i));
       voteCount = voteCount + 1;
       if (voteCount === 3) {
         indexes.push(position);
@@ -131,8 +74,6 @@ function Vote(props) {
       console.log(indexes.length);
       voteCount = voteCount - 1;
     }
-
-    // setChecked(!checked);
   };
   return (
     <>

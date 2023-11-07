@@ -192,7 +192,7 @@ function Vote(props) {
                           className="img-fluid img-candidate rounded-circle"
                         ></img>
                         <h1 className="fs-5 mt-3">{props.name}</h1>
-                        <h4 className="h4">No : 52</h4>
+                        <h4 className="h4">No : {props.no}</h4>
 
                         <input
                           type="checkbox"
@@ -221,7 +221,7 @@ function Vote(props) {
                           className="img-fluid img-candidate rounded-circle"
                         ></img>
                         <h1 className="fs-5 mt-3">{props.name}</h1>
-                        <h4 className="h4">No : 52</h4>
+                        <h4 className="h4">No : {props.no}</h4>
 
                         <input
                           type="checkbox"

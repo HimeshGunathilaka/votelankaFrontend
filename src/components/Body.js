@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/Body.css";
 import Intro from "./Intro";
 import Team from "./Team";
@@ -7,13 +7,14 @@ import AdminPanel from "./AdminPanel";
 // import Vote from "./Vote";
 
 function Body() {
+  const [admin, setAdmin] = useState(false);
   return (
     <>
       <div className="body container-fluid">
         <Intro />
         <Team />
         <Login />
-        <AdminPanel />
+        {admin ? <AdminPanel /> : <div></div>}
       </div>
     </>
   );

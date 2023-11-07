@@ -13,30 +13,46 @@ let voteCount = 0;
 let indexes = [];
 function Vote(props) {
   const [parties, setParties] = useState([]);
-  const [party, setParty] = useState("");
-  const [candidates, setCandidates] = useState([]);
+  let [party, setParty] = useState("all");
+  let [candidates, setCandidates] = useState([]);
   const [candidate, setCandidate] = useState("");
-  const [processed, setProcessed] = useState(false);
-  const list = [null];
+  const [processed, setProcessed] = useState(true);
+  const [processedCandidates, setProcessedCandidates] = useState([]);
+  // const list = [];
+  let list = candidates.filter((candidate) => {
+    if (party === "UNP") {
+      // console.log(party);
+      return candidate.party === party;
+    } else if (party === "HNF") {
+      return candidate.party === party;
+    } else if (party === "UPUF") {
+      return candidate.party === party;
+    } else {
+      return candidate;
+    }
+  });
 
   useEffect(() => {
     loadParties();
   }, [parties]);
 
   useEffect(() => {
+    // setProcessed(true);
     // list.push({id:candidate[]});
-    console.log(candidate);
   }, [candidate]);
 
   useEffect(() => {
-    handlePartyClick();
+    // handlePartyClick();
+    // console.log(list);
   }, [party]);
 
   useEffect(() => {
     loadCandidates();
   }, [candidates]);
 
-  const loadProcessedCandidates = () => {};
+  useEffect(() => {
+    setProcessed(true);
+  }, [processedCandidates]);
 
   const loadParties = async () => {
     try {
@@ -62,33 +78,30 @@ function Vote(props) {
   const handlePartyClick = () => {
     try {
       // console.log(party);
-      for (var item in candidates) {
-        if (candidates[item].party === party) {
-          console.log(party);
-          setCandidate({
-            id: candidates[item].id,
-            name: candidates[item].name,
-            party: candidates[item].party,
-            no: candidates[item].no,
-            image: candidates[item].image,
-            area: candidates[item].area,
-            mobileNo: candidates[item].mobileNo,
-          });
-          // list.push({
-          //   id: candidates[item].id,
-          //   name: candidates[item].name,
-          //   image: candidates[item].image,
-          // });
-          // setProcessed(true);
-          // setVoter({
-          //   id: voters[item].id,
-          //   name: voters[item].name,
-          //   idNumber: voters[item].idNumber,
-          //   phone: voters[item].phone,
-          //   area: voters[item].area,
-          // });
-        }
-      }
+      // for (var item in candidates) {
+      //   if (candidates[item].party === party) {
+      //     // console.log(party);
+      //     setCandidate({
+      //       id: candidates[item].id,
+      //       name: candidates[item].name,
+      //       party: candidates[item].party,
+      //       no: candidates[item].no,
+      //       image: candidates[item].image,
+      //       area: candidates[item].area,
+      //       mobileNo: candidates[item].mobileNo,
+      //     });
+      //     list.push({
+      //       id: candidates[item].id,
+      //       name: candidates[item].name,
+      //       image: candidates[item].image,
+      //       no: candidates[item].no,
+      //     });
+      //     // setProcessedCandidates(candidate);
+      //     // console.log(processedCandidates);
+      //     setProcessed(true);
+      //     console.log(list);
+      //   }
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -181,23 +194,25 @@ function Vote(props) {
             <div className="column-right px-3 container d-flex flex-column mt-2">
               <h5 className="h5 text-center text-light">Candidates</h5>
               <div className="candidates-holder d-flex py-3 row row-cols-3 shadow rounded container-fluid">
-                {processed
-                  ? list.map((props, index) => (
+                {
+                  // processed ?
+                  list.map((candidate, index) => {
+                    return (
                       <div
-                        key={props.id}
+                        key={index}
                         className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
                       >
                         <img
                           src={Shashi}
                           className="img-fluid img-candidate rounded-circle"
                         ></img>
-                        <h1 className="fs-5 mt-3">{props.name}</h1>
-                        <h4 className="h4">No : {props.no}</h4>
+                        <h1 className="fs-5 mt-3">{candidate.name}</h1>
+                        <h4 className="h4">No : {candidate.no}</h4>
 
                         <input
                           type="checkbox"
                           className="btn-check"
-                          id={props.name}
+                          id={candidate.name}
                           autoComplete="off"
                           // disabled={disable}
                           // checked={!checkedState}
@@ -205,41 +220,43 @@ function Vote(props) {
                         ></input>
                         <label
                           className="btn btn-outline-primary px-5 mt-3"
-                          htmlFor={props.name}
+                          htmlFor={candidate.name}
                         >
                           Vote
                         </label>
                       </div>
-                    ))
-                  : candidates.map((props, index) => (
-                      <div
-                        key={props.id}
-                        className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
-                      >
-                        <img
-                          src={Shashi}
-                          className="img-fluid img-candidate rounded-circle"
-                        ></img>
-                        <h1 className="fs-5 mt-3">{props.name}</h1>
-                        <h4 className="h4">No : {props.no}</h4>
+                    );
+                  })
+                  // : candidates.map((props, index) => (
+                  //     <div
+                  //       key={index}
+                  //       className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
+                  //     >
+                  //       <img
+                  //         src={Shashi}
+                  //         className="img-fluid img-candidate rounded-circle"
+                  //       ></img>
+                  //       <h1 className="fs-5 mt-3">{props.name}</h1>
+                  //       <h4 className="h4">No : {props.no}</h4>
 
-                        <input
-                          type="checkbox"
-                          className="btn-check"
-                          id={props.name}
-                          autoComplete="off"
-                          // disabled={disable}
-                          // checked={!checkedState}
-                          onChange={(event) => handleVote(event, index)}
-                        ></input>
-                        <label
-                          className="btn btn-outline-primary px-5 mt-3"
-                          htmlFor={props.name}
-                        >
-                          Vote
-                        </label>
-                      </div>
-                    ))}
+                  //       <input
+                  //         type="checkbox"
+                  //         className="btn-check"
+                  //         id={props.name}
+                  //         autoComplete="off"
+                  //         // disabled={disable}
+                  //         // checked={!checkedState}
+                  //         onChange={(event) => handleVote(event, index)}
+                  //       ></input>
+                  //       <label
+                  //         className="btn btn-outline-primary px-5 mt-3"
+                  //         htmlFor={props.name}
+                  //       >
+                  //         Vote
+                  //       </label>
+                  //     </div>
+                  //   ))
+                }
               </div>
             </div>
           </div>

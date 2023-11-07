@@ -32,6 +32,19 @@ function Login() {
     loadVoters();
   }, [voters]);
 
+  useEffect(() => {
+    console.log(voter.name);
+    if (!(voter.name === undefined)) {
+      toast.success("Your identity was confirmed !");
+      setUser(1);
+      // onCaptchaVerify();
+      // sendOtp();
+    }
+    // return () => {
+    //   console.log("test");
+    // };
+  }, [voter]);
+
   //sends otp to voter's phone
   const sendOtp = () => {
     const appVerifier = window.recaptchaVerifier;
@@ -129,27 +142,8 @@ function Login() {
         }
       }
 
-      //shows otp confirmation to voter after confirming his / her identity
       if (voter.name === undefined) {
         toast.error("Sorry, we couldn't find your account !");
-      } else {
-        toast.success("Your identity was confirmed !");
-        //otp confirmation process starts from here
-        //i have commented below function calls because ,firebase request limit per day is 25. so if we ran out of function calls
-        //we will not be able to complete other processes. keep in mind when application runs bellow two functions are called.
-        // onCaptchaVerify();
-        // sendOtp();
-
-        //for you to understand and try the application i'm setting up a user. keep in mind above two functions are called when
-        //application runs not these steps. *** because of i'm setting up a user manually, otp verification process will be hidden. ***
-        // setVoter({
-        //   id: voters[item].id,
-        //   name: voters[item].name,
-        //   idNumber: voters[item].idNumber,
-        //   phone: voters[item].phone,
-        //   area: voters[item].area,
-        // });
-        setUser(1);
       }
     }
   };

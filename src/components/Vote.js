@@ -135,69 +135,35 @@ function Vote(props) {
             <div className="column-right px-3 container d-flex flex-column mt-2">
               <h5 className="h5 text-center text-light">Candidates</h5>
               <div className="candidates-holder d-flex py-3 row row-cols-3 shadow rounded container-fluid">
-                {
-                  // processed ?
-                  list.map((candidate, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
+                {list.map((candidate, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
+                    >
+                      <img
+                        src={Shashi}
+                        className="img-fluid img-candidate rounded-circle"
+                      ></img>
+                      <h1 className="fs-5 mt-3">{candidate.name}</h1>
+                      <h4 className="h4">No : {candidate.no}</h4>
+
+                      <input
+                        type="checkbox"
+                        className="btn-check"
+                        id={candidate.name}
+                        autoComplete="off"
+                        onChange={(event) => handleVote(event, index)}
+                      ></input>
+                      <label
+                        className="btn btn-outline-primary px-5 mt-3"
+                        htmlFor={candidate.name}
                       >
-                        <img
-                          src={Shashi}
-                          className="img-fluid img-candidate rounded-circle"
-                        ></img>
-                        <h1 className="fs-5 mt-3">{candidate.name}</h1>
-                        <h4 className="h4">No : {candidate.no}</h4>
-
-                        <input
-                          type="checkbox"
-                          className="btn-check"
-                          id={candidate.name}
-                          autoComplete="off"
-                          // disabled={disable}
-                          // checked={!checkedState}
-                          onChange={(event) => handleVote(event, index)}
-                        ></input>
-                        <label
-                          className="btn btn-outline-primary px-5 mt-3"
-                          htmlFor={candidate.name}
-                        >
-                          Vote
-                        </label>
-                      </div>
-                    );
-                  })
-                  // : candidates.map((props, index) => (
-                  //     <div
-                  //       key={index}
-                  //       className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
-                  //     >
-                  //       <img
-                  //         src={Shashi}
-                  //         className="img-fluid img-candidate rounded-circle"
-                  //       ></img>
-                  //       <h1 className="fs-5 mt-3">{props.name}</h1>
-                  //       <h4 className="h4">No : {props.no}</h4>
-
-                  //       <input
-                  //         type="checkbox"
-                  //         className="btn-check"
-                  //         id={props.name}
-                  //         autoComplete="off"
-                  //         // disabled={disable}
-                  //         // checked={!checkedState}
-                  //         onChange={(event) => handleVote(event, index)}
-                  //       ></input>
-                  //       <label
-                  //         className="btn btn-outline-primary px-5 mt-3"
-                  //         htmlFor={props.name}
-                  //       >
-                  //         Vote
-                  //       </label>
-                  //     </div>
-                  //   ))
-                }
+                        Vote
+                      </label>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

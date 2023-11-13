@@ -29,6 +29,8 @@ function Vote(props) {
     }
   });
 
+  useEffect(() => {}, [image]);
+
   useEffect(() => {
     loadParties();
   }, [parties]);

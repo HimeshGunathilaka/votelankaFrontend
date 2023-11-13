@@ -14,6 +14,7 @@ function Vote(props) {
   let [candidates, setCandidates] = useState([]);
   const [candidate, setCandidate] = useState("");
   let [image, setImage] = useState("");
+  let [images, setImages] = useState([]);
 
   let list = candidates.filter((candidate) => {
     if (party === "UNP") {
@@ -29,15 +30,19 @@ function Vote(props) {
     }
   });
 
-  useEffect(() => {}, [image]);
+  useEffect(() => {
+    console.log("image is set !");
+  }, [image]);
+
+  useEffect(() => {
+    console.log("fected all images !");
+  }, []);
 
   useEffect(() => {
     loadParties();
   }, [parties]);
 
-  useEffect(() => {
-    console.log("image is set !");
-  }, [candidate]);
+  useEffect(() => {}, [candidate]);
 
   useEffect(() => {
     loadCandidates();

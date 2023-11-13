@@ -1,6 +1,6 @@
 import "../css/Vote.css";
 import Candidate from "./Candidate.js";
-import Party from "./Party.js";
+import Party from "../images/party.jpg";
 import Party_1 from "../images/party_1.jpg";
 import Shashi from "../images/shashi.jpg";
 import React, { useEffect, useState } from "react";
@@ -113,7 +113,7 @@ function Vote(props) {
                   <div className="container-sm d-flex flex-column">
                     <div className="party container-sm shadow-sm rounded-circle btn btn-outline-success px-2 py-2">
                       <img
-                        src={Party_1}
+                        src={Party}
                         alt="party 01"
                         className="rouned-circle img-fluid party-image"
                         onClick={(e) => setParty("All")}

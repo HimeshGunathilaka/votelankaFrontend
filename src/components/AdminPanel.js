@@ -4,7 +4,7 @@ import "../css/Admin.css";
 import toast, { Toaster } from "react-hot-toast";
 
 function AdminPanel() {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [mobileNo, setPhone] = useState("");
   const [name, setName] = useState("");
   const [no, setVoteNumber] = useState("");
@@ -36,6 +36,18 @@ function AdminPanel() {
     }
   };
 
+  const convertToBase64 = (e) => {
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      // console.log(reader.result);
+      setImage(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.log("error :", error);
+    };
+  };
+
   const loadParties = async () => {
     try {
       const partyResult = await axios.get("http://localhost:8080/party/*");
@@ -55,49 +67,48 @@ function AdminPanel() {
   };
 
   const onSubmit = () => {
-    for (var item in candidates) {
-      if (
-        candidates[item].name === name &&
-        candidates[item].party === party &&
-        candidates[item].area === area &&
-        candidates[item].no === no &&
-        candidates[item].mobileNo === mobileNo
-      ) {
-        //voter's identity confirmed
-        //sets voter by calling setVoter function
-        setCandidate({
-          name: candidates[item].name,
-          image: candidates[item].image,
-          party: candidates[item].party,
-          no: candidates[item].no,
-          mobileNo: candidates[item].mobileNo,
-          area: candidates[item].area,
-        });
-        break;
-      }
-    }
-
-    if (candidate.name === undefined) {
-      const formData = new FormData();
-      formData.append();
-      toast.success("Data sumbited !");
-    } else {
-      toast.error("Duplicate found !");
-      console.log(
-        "Name :" +
-          candidate.name +
-          " ,Phone :" +
-          candidate.mobileNo +
-          " ,Area :" +
-          candidate.area +
-          " ,Vote no. :" +
-          candidate.no +
-          " ,Party :" +
-          candidate.party +
-          " ,Image :" +
-          candidate.image
-      );
-    }
+    // for (var item in candidates) {
+    //   if (
+    //     candidates[item].name === name &&
+    //     candidates[item].party === party &&
+    //     candidates[item].area === area &&
+    //     candidates[item].no === no &&
+    //     candidates[item].mobileNo === mobileNo
+    //   ) {
+    //     //voter's identity confirmed
+    //     //sets voter by calling setVoter function
+    //     setCandidate({
+    //       name: candidates[item].name,
+    //       image: candidates[item].image,
+    //       party: candidates[item].party,
+    //       no: candidates[item].no,
+    //       mobileNo: candidates[item].mobileNo,
+    //       area: candidates[item].area,
+    //     });
+    //     break;
+    //   }
+    // }
+    // if (candidate.name === undefined) {
+    //   const formData = new FormData();
+    //   formData.append();
+    //   toast.success("Data sumbited !");
+    // } else {
+    //   toast.error("Duplicate found !");
+    //   console.log(
+    //     "Name :" +
+    //       candidate.name +
+    //       " ,Phone :" +
+    //       candidate.mobileNo +
+    //       " ,Area :" +
+    //       candidate.area +
+    //       " ,Vote no. :" +
+    //       candidate.no +
+    //       " ,Party :" +
+    //       candidate.party +
+    //       " ,Image :" +
+    //       candidate.image
+    //   );
+    // }
   };
 
   return (
@@ -120,14 +131,26 @@ function AdminPanel() {
                 </span>
                 <input
                   type="file"
+                  accept="image/*"
                   className="form-control"
                   id="image"
                   name="image"
                   required
-                  onChange={(e) => setImage(e.target.files[0])}
+                  // onChange={(e) => setImage(e.target.files[0])}
+                  onChange={(e) => convertToBase64(e)}
                   aria-describedby="basic-addon3 basic-addon4"
                 />
               </div>
+              {image == "" || image == null ? (
+                ""
+              ) : (
+                <img
+                  className="mx-3 my-3"
+                  width={100}
+                  height={100}
+                  src={image}
+                />
+              )}
             </div>
 
             <div className="mb-3">

@@ -7,7 +7,7 @@ import AdminPanel from "./AdminPanel";
 // import Vote from "./Vote";
 
 function Body() {
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   return (
     <>
       <div className="body container-fluid">

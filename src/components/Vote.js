@@ -13,8 +13,6 @@ function Vote(props) {
   let [party, setParty] = useState("all");
   let [candidates, setCandidates] = useState([]);
   const [candidate, setCandidate] = useState("");
-  let [image, setImage] = useState("");
-  let [images, setImages] = useState([]);
 
   let list = candidates.filter((candidate) => {
     if (party === "UNP") {
@@ -29,14 +27,6 @@ function Vote(props) {
       return candidate;
     }
   });
-
-  useEffect(() => {
-    console.log("image is set !");
-  }, [image]);
-
-  useEffect(() => {
-    console.log("fected all images !");
-  }, []);
 
   useEffect(() => {
     loadParties();
@@ -120,6 +110,17 @@ function Vote(props) {
               <h5 className="col h5 text-light">Parties</h5>
               <div className="col party-container rounded-pill shadow d-flex flex-row py-5">
                 <div className="container-fluid d-flex flex-column row-gap-3 party-holder">
+                  <div className="container-sm d-flex flex-column">
+                    <div className="party container-sm shadow-sm rounded-circle btn btn-outline-success px-2 py-2">
+                      <img
+                        src={Party_1}
+                        alt="party 01"
+                        className="rouned-circle img-fluid party-image"
+                        onClick={(e) => setParty("All")}
+                      ></img>
+                    </div>
+                    <p className="text-center text-success fs-6 mt-2">All</p>
+                  </div>
                   {parties.map((party, index) => (
                     <div
                       key={index}
@@ -152,7 +153,10 @@ function Vote(props) {
                       className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
                     >
                       <img
-                        src={Shashi}
+                        src={
+                          "http://localhost:8080/image/database/" +
+                          candidate.image
+                        }
                         className="img-fluid img-candidate rounded-circle"
                       ></img>
                       <h1 className="fs-5 mt-3">{candidate.name}</h1>

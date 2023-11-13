@@ -32,7 +32,9 @@ function Vote(props) {
     loadParties();
   }, [parties]);
 
-  useEffect(() => {}, [candidate]);
+  useEffect(() => {
+    console.log("image is set !");
+  }, [candidate]);
 
   useEffect(() => {
     loadCandidates();

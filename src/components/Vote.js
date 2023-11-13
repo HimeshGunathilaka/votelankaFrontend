@@ -13,6 +13,7 @@ function Vote(props) {
   let [party, setParty] = useState("all");
   let [candidates, setCandidates] = useState([]);
   const [candidate, setCandidate] = useState("");
+  let [image, setImage] = useState("");
 
   let list = candidates.filter((candidate) => {
     if (party === "UNP") {

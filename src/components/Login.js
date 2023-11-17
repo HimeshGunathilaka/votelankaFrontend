@@ -37,8 +37,8 @@ function Login() {
     if (!(voter.name === undefined)) {
       toast.success("Your identity was confirmed !");
       setUser(1);
-      // onCaptchaVerify();
-      // sendOtp();
+      onCaptchaVerify();
+      sendOtp();
     }
     // return () => {
     //   console.log("test");

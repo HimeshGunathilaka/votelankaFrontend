@@ -37,8 +37,8 @@ function Login() {
     if (!(voter.name === undefined)) {
       toast.success("Your identity was confirmed !");
       setUser(1);
-      onCaptchaVerify();
-      sendOtp();
+      // onCaptchaVerify();
+      // sendOtp();
     }
     // return () => {
     //   console.log("test");
@@ -181,9 +181,12 @@ function Login() {
       <Toaster duration={4000} />
       <div id="recaptcha-container"></div>
       {user ? (
-        <Vote name={voter.name} idNumber={voter.idNumber} />
+        <Vote name={voter.name} idNumber={voter.idNumber} area={voter.area} />
       ) : (
-        <div className="container-fluid d-flex flex-column mt-5 justify-content-center align-items-center">
+        <div
+          id="login"
+          className="container-fluid d-flex flex-column mt-5 justify-content-center align-items-center"
+        >
           <h2 className={`text-white mb-5 ${loginHide}`}>Registration form</h2>
 
           <div className={`container-sm login-container my-3 ${loginHide}`}>

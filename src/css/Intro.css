@@ -1,3 +1,6 @@
+.about{
+    margin-top: 10vh;
+}
 .grid-item{
     /* background-color: blueviolet; */
     height: 25em;
@@ -8,6 +11,10 @@
     height: 40px;
     margin: 0%;
     padding: 0%;
+}
+
+.btn-vote:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .img-intro{

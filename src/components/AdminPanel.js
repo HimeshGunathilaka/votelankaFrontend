@@ -174,7 +174,7 @@ function AdminPanel() {
           className="container-fluid d-flex flex-column mt-5 justify-content-center align-items-center"
         >
           <h2 className="text-white mb-5">Admin Login</h2>
-          <div className="container-sm admin-container my-5">
+          <div className="container-sm admin-container my-3">
             <form className="container-sm gap-3 shadow-lg bg-white rounded px-5 py-5">
               <div className="mb-3">
                 <label htmlFor="admin_username" className="form-label">

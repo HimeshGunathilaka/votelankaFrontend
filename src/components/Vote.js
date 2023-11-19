@@ -1,8 +1,9 @@
 import "../css/Vote.css";
 import Candidate from "./Candidate.js";
-import Party from "../images/party.jpg";
+import Party from "../images/all_party.jpg";
 import Party_1 from "../images/party_1.jpg";
 import Shashi from "../images/shashi.jpg";
+import toast, { Toaster } from "react-hot-toast";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -16,15 +17,15 @@ function Vote(props) {
 
   let list = candidates.filter((candidate) => {
     if (party === "UNP") {
-      return candidate.party === party;
+      return candidate.party === party && candidate.area === props.area;
     } else if (party === "HNF") {
-      return candidate.party === party;
+      return candidate.party === party && candidate.area === props.area;
     } else if (party === "UPUF") {
-      return candidate.party === party;
+      return candidate.party === party && candidate.area === props.area;
     } else if (party === "JVP") {
-      return candidate.party === party;
+      return candidate.party === party && candidate.area === props.area;
     } else {
-      return candidate;
+      return candidate.area === props.area;
     }
   });
 
@@ -64,7 +65,7 @@ function Vote(props) {
       if (voteCount === 3) {
         indexes.push(position);
         console.log(indexes.length);
-        alert("You have reached maximum vote count !");
+        toast.error("You can only use 3 votes !");
       } else {
         indexes.push(position);
         console.log(indexes.length);
@@ -77,12 +78,13 @@ function Vote(props) {
   };
   return (
     <>
+      <Toaster duration={4000} />
       <div
         id="vote"
         className="container-fluid mt-3 justify-content-center align-items-center d-flex flex-column"
       >
         <h2 className="mb-5 text-white">Voting form</h2>
-        <div className="container-xxl rounded py-5 my-3 shadow-lg d-flex flex-column bg-dark">
+        <div className="container-xxl rounded py-5 my-3 shadow-lg d-flex flex-column">
           <div className="container-fluid row row-cols-2">
             <div className="container-fluid  d-flex flex-column justify-content-start mb-5">
               <h1 className="h1 text-success">Welcome, {props.name} !</h1>

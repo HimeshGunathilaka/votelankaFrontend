@@ -1,3 +1,8 @@
+::-webkit-scrollbar {
+    scroll-behavior: smooth;
+    display: none;
+}
+
 .text-hint{
     font-size: 0.9em;
     margin: 0%;

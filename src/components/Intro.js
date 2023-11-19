@@ -7,8 +7,8 @@ function Intro() {
   // const btn_text = "Let's vote"
   return (
     <>
-      <div id="about" className="conatiner pt-1">
-        <div className="row container-fluid py-5">
+      <div id="about" className="conatiner pt-1 about">
+        <div className="row d-flex container-fluid py-5">
           <div className="col d-flex grid-item container-fluid justify-content-center align-items-center">
             <div className="d-flex flex-column mb-2">
               <h1 className="h1 text-white text-start">
@@ -20,7 +20,7 @@ function Intro() {
                 Once a dream is not a dream anymore. now you can
                 <br /> post your vote from wherever you are.
               </p>
-              <a href="#vote">
+              <a href="#login">
                 <button
                   type="button"
                   className="btn btn-success btn-vote text-white rounded"

@@ -171,11 +171,6 @@ function Login() {
       });
   };
 
-  // const handleVote = () => {
-  //   setOtpHide("d-none");
-  //   setUser(1);
-  // };
-
   return (
     <>
       <Toaster duration={4000} />

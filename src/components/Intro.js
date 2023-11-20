@@ -21,10 +21,11 @@ function Intro() {
                 <br /> post your vote from wherever you are.
               </p>
               <a href="#login">
-                <button
+                {/* <button
                   type="button"
                   className="btn btn-success btn-vote text-white rounded"
-                >
+                > */}
+                <button className="button-29" type="button" role="button">
                   Let's vote
                 </button>
               </a>

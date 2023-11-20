@@ -237,10 +237,16 @@ function Login() {
                   </p>
                 </div>
               </div>
-              <button
+              {/* <button
                 type="button"
                 onClick={onSignup}
                 className="btn btn-success"
+              > */}
+              <button
+                className="button-79"
+                type="button"
+                role="button"
+                onClick={onSignup}
               >
                 Send code via SMS
               </button>

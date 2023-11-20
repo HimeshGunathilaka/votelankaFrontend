@@ -55,3 +55,44 @@
     height: 100%;
     justify-content: center;
 }
+
+.container-submit{
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    position:fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.wrapper-success {
+    margin: 120px;
+  }
+  .wrapper-success .card {
+    width: 720px;
+    height: 120px;
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-left: 5px solid #49d761;
+    border-radius: 3px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  .wrapper-success .card .subject {
+    margin-right: 180px;
+  }
+  .wrapper-success .card .subject p {
+    color: #909092;
+  }
+  .wrapper-success .card .icon {
+    font-size: 28px;
+    color: #49d761;
+  }
+  .wrapper-success .card .icon-times {
+    font-size: 28px;
+    color: #c3c2c7;
+    cursor: pointer;
+  }

@@ -183,6 +183,22 @@ function Vote(props) {
               </div>
             </div>
           </div>
+          <div className="container-fluid d-flex container-submit justify-content-center align-items-center">
+            <div class="wrapper-success">
+              <div class="card">
+                <div class="icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="subject">
+                  <h3>Success</h3>
+                  <p>Anyone with access can view your invited visitors</p>
+                </div>
+                <div class="icon-times">
+                  <i class="fas fa-times"></i>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -227,7 +227,6 @@ function Login() {
                     name="usernumber"
                     required
                     onChange={(e) => setPhone(e.target.value)}
-                    // value={phone.value}
                     aria-describedby="basic-addon3 basic-addon4"
                   />
                 </div>
@@ -237,11 +236,6 @@ function Login() {
                   </p>
                 </div>
               </div>
-              {/* <button
-                type="button"
-                onClick={onSignup}
-                className="btn btn-success"
-              > */}
               <button
                 className="button-79"
                 type="button"

@@ -18,13 +18,18 @@ nav ul li a {
     text-decoration: none;
     color: white;
     display: block;
+    padding: 0;
+    /* border-radius: 0.3rem; */
+    border-color: #272829;
+    border-width: 0px 0px 3px 0px;
+    border-style: solid;
     padding: 0.2rem 1rem 0.2rem 1rem;
-    border-radius: 0.3rem;
 }
 
 nav ul li a:hover{
     color: white;
-    transition: 0.8s;
-    background-color: #198754;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.5s;
+    /* background-color: #198754; */
+    border-color: #198754;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 50px 0 rgba(0, 0, 0, 0.19); */
 }

@@ -27,22 +27,22 @@ export default function Header() {
           </a>
           <div className="collapse navbar-collapse d-flex justify-content-end">
             <ul id="navbar-container" className="navbar-nav mb-2 mb-lg-0 me-5">
-              <li className="nav-item mx-4">
+              <li className="nav-item mx-3">
                 <a id="header-team" href="#team">
                   Team
                 </a>
               </li>
-              <li className="nav-item mx-4">
+              <li className="nav-item mx-3">
                 <a id="header-vote" href="#login">
                   Vote
                 </a>
               </li>
-              <li className="nav-item mx-4">
-                <a id="header-about" href="#about">
+              <li className="nav-item mx-3">
+                <a id="header-about" href="#">
                   About
                 </a>
               </li>
-              <li className="nav-item mx-4">
+              <li className="nav-item mx-3">
                 <a id="header-admin" href="#admin">
                   Admin
                 </a>

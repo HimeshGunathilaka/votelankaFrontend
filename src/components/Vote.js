@@ -16,9 +16,9 @@ function Vote(props) {
   let [party, setParty] = useState("all");
   let [candidates, setCandidates] = useState([]);
   const [candidate, setCandidate] = useState("");
-  const [submit, setSubmit] = useState("d-flex");
+  const [submit, setSubmit] = useState("d-none");
   const [submitAlert, setSubmitAlert] = useState("d-none");
-  const [submitForm, setSubmitForm] = useState("d-flex");
+  const [submitForm, setSubmitForm] = useState("d-none");
 
   let list = candidates.filter((candidate) => {
     if (party === "UNP") {
@@ -93,7 +93,7 @@ function Vote(props) {
         className="container-fluid mt-3 justify-content-center align-items-center d-flex flex-column"
       >
         <h2 className="mb-5 text-white">Voting form</h2>
-        <div className="container-xxl rounded py-5 my-3 shadow-lg d-flex flex-column">
+        <div className="container-xxl rounded py-5 my-3 d-flex flex-column container-vote">
           <div className="container-fluid row row-cols-2">
             <div className="container-fluid  d-flex flex-column justify-content-start mb-5">
               <h1 className="h1 text-success">Welcome, {props.name} !</h1>

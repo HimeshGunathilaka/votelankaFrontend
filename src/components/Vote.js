@@ -5,6 +5,8 @@ import Party_1 from "../images/party_1.jpg";
 import Shashi from "../images/shashi.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 let voteCount = 0;
@@ -14,6 +16,9 @@ function Vote(props) {
   let [party, setParty] = useState("all");
   let [candidates, setCandidates] = useState([]);
   const [candidate, setCandidate] = useState("");
+  const [submit, setSubmit] = useState("d-none");
+  const [submitAlert, setSubmitAlert] = useState("d-none");
+  const [submitForm, setSubmitForm] = useState("d-none");
 
   let list = candidates.filter((candidate) => {
     if (party === "UNP") {
@@ -59,6 +64,10 @@ function Vote(props) {
     }
   };
 
+  const handleClose = () => {
+    setSubmitAlert("d-none");
+  };
+
   const handleVote = (event, position) => {
     if (event.target.checked) {
       voteCount = voteCount + 1;
@@ -84,13 +93,16 @@ function Vote(props) {
         className="container-fluid mt-3 justify-content-center align-items-center d-flex flex-column"
       >
         <h2 className="mb-5 text-white">Voting form</h2>
-        <div className="container-xxl rounded py-5 my-3 shadow-lg d-flex flex-column">
+        <div className="container-fluid rounded py-5 my-3 d-flex flex-column container-vote">
           <div className="container-fluid row row-cols-2">
             <div className="container-fluid  d-flex flex-column justify-content-start mb-5">
               <h1 className="h1 text-success">Welcome, {props.name} !</h1>
               <p className="text-light-emphasis fs-4 mb-5">
                 Identity card number : {props.idNumber}
               </p>
+            </div>
+
+            <div className="container-fluid mb-5 flex-column">
               <p className="text-secondary text-hint">
                 * This is your voting area. make sure to use all your votes
                 before you leave.
@@ -103,8 +115,6 @@ function Vote(props) {
                 or different parties.
               </p>
             </div>
-
-            <div className="container-fluid mb-5 flex-column"></div>
           </div>
 
           <div className="container-fluid d-flex flex-row">
@@ -183,18 +193,57 @@ function Vote(props) {
               </div>
             </div>
           </div>
-          <div className="container-fluid d-flex container-submit justify-content-center align-items-center">
-            <div class="wrapper-success">
-              <div class="card">
-                <div class="icon">
-                  <i class="fas fa-check-circle"></i>
+
+          <div
+            className={`container-fluid ${submit} container-submit justify-content-center align-items-center`}
+          >
+            <div
+              className={`submit-form container-sm ${submitForm} justify-content-center align-items-center`}
+            >
+              <form className="container-sm gap-3 shadow-lg bg-white rounded pb-2 px-5 pt-2 shadow">
+                <div className="mb-3 d-flex flex-column">
+                  <h3 className="h4 my-4">Submit Vote</h3>
+                  <div className="checkbox-wrapper-46">
+                    <input className="inp-cbx" id="cbx-46" type="checkbox" />
+                    <label className="cbx" for="cbx-46">
+                      <span>
+                        <svg width="12px" height="10px" viewbox="0 0 12 10">
+                          <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                        </svg>
+                      </span>
+                      <span>I agree to terms and conditions.</span>
+                    </label>
+                  </div>
+
+                  <button
+                    className="button-80 mt-3"
+                    type="button"
+                    role="button"
+                  >
+                    Submit
+                  </button>
                 </div>
-                <div class="subject">
-                  <h3>Success</h3>
-                  <p>Anyone with access can view your invited visitors</p>
+              </form>
+            </div>
+
+            <div className={`wrapper-success ${submitAlert}`}>
+              <div className="card">
+                <div className="icon">
+                  <FontAwesomeIcon icon={faCircleCheck} />
                 </div>
-                <div class="icon-times">
-                  <i class="fas fa-times"></i>
+                <div className="subject ms-3 mt-3">
+                  <h3 className="h5">Vote submitted</h3>
+                  <p className="fs-5">
+                    <small>Thank you for using our service</small>
+                  </p>
+                </div>
+                <div
+                  className="icon-times"
+                  onClick={(e) => {
+                    handleClose();
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTimes} />
                 </div>
               </div>
             </div>

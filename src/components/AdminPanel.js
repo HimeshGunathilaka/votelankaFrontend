@@ -225,11 +225,12 @@ function AdminPanel() {
                 </div>
               </div>
               <button
+                className="button-79"
                 type="button"
+                role="button"
                 onClick={onAdminSubmit}
-                className="btn btn-success"
               >
-                login as admin
+                Login as admin
               </button>
             </form>
           </div>

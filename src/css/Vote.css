@@ -57,6 +57,7 @@
 }
 
 .container-vote{
+  width: 90vw;
   background-color: rgba(255, 255, 255, 0.06);
 	-webkit-backdrop-filter: blur(15px);
 	backdrop-filter: blur(15px);

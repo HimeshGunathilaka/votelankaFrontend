@@ -11,12 +11,15 @@ function Body() {
   const [admin, setAdmin] = useState(true);
   return (
     <>
-      <div className="body container-fluid">
-        <Intro />
-        <Team />
-        <Login />
-        {admin ? <AdminPanel /> : <div></div>}
-        <Navigator />
+      <div className="container-fluid body-container">
+        <div className="body container-fluid">
+          <Intro />
+          <Team />
+          <Login />
+          {admin ? <AdminPanel /> : <div></div>}
+          <Navigator />
+        </div>
+        <div class="blob"></div>
       </div>
     </>
   );

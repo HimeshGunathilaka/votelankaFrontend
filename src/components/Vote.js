@@ -93,13 +93,16 @@ function Vote(props) {
         className="container-fluid mt-3 justify-content-center align-items-center d-flex flex-column"
       >
         <h2 className="mb-5 text-white">Voting form</h2>
-        <div className="container-xxl rounded py-5 my-3 d-flex flex-column container-vote">
+        <div className="container-fluid rounded py-5 my-3 d-flex flex-column container-vote">
           <div className="container-fluid row row-cols-2">
             <div className="container-fluid  d-flex flex-column justify-content-start mb-5">
               <h1 className="h1 text-success">Welcome, {props.name} !</h1>
               <p className="text-light-emphasis fs-4 mb-5">
                 Identity card number : {props.idNumber}
               </p>
+            </div>
+
+            <div className="container-fluid mb-5 flex-column">
               <p className="text-secondary text-hint">
                 * This is your voting area. make sure to use all your votes
                 before you leave.
@@ -112,8 +115,6 @@ function Vote(props) {
                 or different parties.
               </p>
             </div>
-
-            <div className="container-fluid mb-5 flex-column"></div>
           </div>
 
           <div className="container-fluid d-flex flex-row">

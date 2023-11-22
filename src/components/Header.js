@@ -17,32 +17,43 @@ export default function Header() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg shadow">
-        <div className="container-fluid">
+      <nav class="navbar navbar-expand-lg shadow">
+        <div className="container-fluid container-navbar">
           <a
             href="#"
-            className="ms-3 my-1 heading navbar-brand text-white text-start"
+            className="ms-3 heading navbar-brand text-white text-start"
           >
             VOTE<span className="text-success">LANKA</span>
           </a>
-          <div className="collapse navbar-collapse d-flex justify-content-end">
-            <ul id="navbar-container" className="navbar-nav mb-2 mb-lg-0 me-5">
-              <li className="nav-item mx-3">
+          <button
+            className="navbar-toggler custom-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div id="navbarSupportedContent" className="collapse navbar-collapse">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 column-gap-3">
+              <li className="nav-item">
                 <a id="header-team" href="#team">
                   Team
                 </a>
               </li>
-              <li className="nav-item mx-3">
+              <li className="nav-item">
                 <a id="header-vote" href="#login">
                   Vote
                 </a>
               </li>
-              <li className="nav-item mx-3">
+              <li className="nav-item">
                 <a id="header-about" href="#">
                   About
                 </a>
               </li>
-              <li className="nav-item mx-3">
+              <li className="nav-item">
                 <a id="header-admin" href="#admin">
                   Admin
                 </a>

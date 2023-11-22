@@ -225,7 +225,7 @@ function AdminPanel() {
                 </div>
               </div>
               <button
-                className="button-79"
+                className="button-29"
                 type="button"
                 role="button"
                 onClick={onAdminSubmit}
@@ -392,11 +392,7 @@ function AdminPanel() {
                 </div>
               </div>
 
-              <button
-                type="button"
-                onClick={onSubmit}
-                className="btn btn-success"
-              >
+              <button type="button" onClick={onSubmit} className="button-29">
                 Submit data
               </button>
             </form>

@@ -21,7 +21,7 @@ function Team() {
               to make this dream come true.
             </div>
           </div>
-          <div className="row team-container container my-5 column-gap-4 row-gap-3 text-white justify-content-center">
+          <div className="row row-cols-1 row-cols-md-3 g-4 container text-white justify-content-center team-holder">
             <div className="col flex-column d-flex px-2 py-2 team-member">
               <div class="main">
                 <img

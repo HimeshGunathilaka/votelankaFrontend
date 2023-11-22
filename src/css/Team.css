@@ -4,6 +4,9 @@
     width: 85%;
 }
 
+.team-holder{
+  width: 85%;
+}
 /* .team-member{
     width: auto;
     height: auto;
@@ -21,9 +24,9 @@
 
 .team-member {
   user-select: none;
-  width: auto;
+  width: 200px;
   height: auto;
-  margin: 5rem auto;
+  margin: 3rem auto;
   align-items: center;
   justify-content: start;
   border: 1px solid #ffffff22;

@@ -6,6 +6,31 @@
     flex-direction: column;
 }
 
+.login-container form{
+  background-color: rgba(255, 255, 255, 0.06);
+	-webkit-backdrop-filter: blur(15px);
+	backdrop-filter: blur(15px);
+  border: 1.5px solid rgba(255, 255, 255, 0.06);
+	border-radius: 8px;
+  color: white;
+}
+
+.login-container form p{
+  color: #FF0060;
+}
+
+
+.otp-container{
+  background-color: rgba(255, 255, 255, 0.06);
+	-webkit-backdrop-filter: blur(15px);
+	backdrop-filter: blur(15px);
+  border: 1.5px solid rgba(255, 255, 255, 0.06);
+	border-radius: 8px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
 .otp-container{
     /* justify-content: center; */
     align-items: center;
@@ -25,7 +50,7 @@
 /*login button with animation*/
 .button-79 {
     backface-visibility: hidden;
-    background: #198754;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
     border: 0;
     border-radius: .375rem;
     box-sizing: border-box;

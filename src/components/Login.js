@@ -36,7 +36,8 @@ function Login() {
     console.log(voter.name);
     if (!(voter.name === undefined)) {
       toast.success("Your identity was confirmed !");
-      setUser(1);
+      setOtpHide("d-flex");
+      // setUser(1);
       // onCaptchaVerify();
       // sendOtp();
     }
@@ -142,9 +143,9 @@ function Login() {
         }
       }
 
-      if (voter.name === undefined) {
-        toast.error("Sorry, we couldn't find your account !");
-      }
+      // if (voter.name === undefined) {
+      //   toast.error("Sorry, we couldn't find your account !");
+      // }
     }
   };
 
@@ -185,7 +186,7 @@ function Login() {
           <h2 className={`text-white mb-5 ${loginHide}`}>Registration form</h2>
 
           <div className={`container-sm login-container my-3 ${loginHide}`}>
-            <form className="container-sm gap-3 shadow-lg bg-white rounded px-5 py-5">
+            <form className="container-sm gap-3 px-5 py-5">
               <div className="mb-3">
                 <label htmlFor="userid" className="form-label">
                   Your identity card number
@@ -205,14 +206,14 @@ function Login() {
                   />
                 </div>
                 <div className="form-text" id="basic-addon4">
-                  <p className={`text-danger ${warningIdState}`}>{warningId}</p>
+                  <p className={`${warningIdState}`}>{warningId}</p>
                 </div>
               </div>
 
               <div className="mb-3">
                 <label htmlFor="usernumber" className="form-label">
                   Your phone number
-                  <span className="text-secondary text-example ms-3">
+                  <span className="text-white text-example ms-3">
                     ( Ex : +94771234567 )
                   </span>
                 </label>
@@ -231,17 +232,10 @@ function Login() {
                   />
                 </div>
                 <div className="form-text" id="basic-addon4 ">
-                  <p className={`text-danger ${warningPhoneState}`}>
-                    {warningPhone}
-                  </p>
+                  <p className={`${warningPhoneState}`}>{warningPhone}</p>
                 </div>
               </div>
-              <button
-                className="button-79"
-                type="button"
-                role="button"
-                onClick={onSignup}
-              >
+              <button className="button-29" type="button" onClick={onSignup}>
                 Send code via SMS
               </button>
             </form>
@@ -261,7 +255,7 @@ function Login() {
           </div>
 
           <div
-            className={`container-sm shadow-lg otp-container d-flex flex-column bg-white my-3 rounded px-5 py-5 ${otpHide}`}
+            className={`otp-container container-sm otp-container d-flex flex-column my-3 px-5 py-5 ${otpHide}`}
           >
             <label htmlFor="otp-input text-dark">Enter OTP code</label>
             <OtpInput
@@ -275,11 +269,7 @@ function Login() {
               autoFocus
               className="my-4"
             ></OtpInput>
-            <button
-              type="button"
-              className="btn btn-success px-4"
-              onClick={onOtpVerify}
-            >
+            <button className="button-29" type="button" onClick={onOtpVerify}>
               {loading && (
                 <div
                   className="spinner-border spinner-conatiner me-2"

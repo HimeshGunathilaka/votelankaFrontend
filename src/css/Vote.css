@@ -11,7 +11,7 @@
 
 .column-left{
     width: 10%;
-    height: 80vh;
+    height: 75vh;
     padding: 0%;
     margin: 0%;
     align-items: center;
@@ -20,11 +20,17 @@
 
 .column-right{
     width: 85%;
-    height: 80vh;
+    height: 75vh;
     justify-content: center;
     padding: 0%;
     align-items: center;
     margin: 0%;
+}
+
+.candidate img{
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
 }
 
 .party-container{
@@ -45,7 +51,7 @@
     border-width: 1px;
     border-style: solid;
     border: 1.5px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 7px 20px 5px #00000088;
+    box-shadow: 0 2px 15px 1px #00000088;
     transition: 0.5s all;
 }
 
@@ -59,8 +65,9 @@
 
 .party:hover{
   border-color: #5468ff;
-  box-shadow: 0 7px 50px 10px #000000aa;
+  box-shadow: 0 7px 50px 5px #000000aa;
   transform: scale(1.08);
+  cursor: pointer;
   /* background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%); */
 }
 
@@ -80,10 +87,11 @@
 }
 
 .candidate{
-  border-width: 1px;
+    /* height: 400px; */
+    border-width: 1px;
     border-style: solid;
     border: 1.5px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 7px 50px 2px #00000088;
+    box-shadow: 0 2px 15px 1px #00000088;
     transition: 0.5s all;
     color: white;
 }
@@ -94,7 +102,7 @@
 
 .candidate:hover{
   border-color: #5468ff;
-  box-shadow: 0 7px 50px 15px #000000aa;
+  box-shadow: 0 7px 50px 5px #000000aa;
   transform: scale(1.08);
 }
 
@@ -391,7 +399,7 @@
 }
 .checkbox-wrapper-10 .tgl-flip + .tgl-btn:after {
   content: attr(data-tg-on);
-  background: #02C66F;
+  background: #4e54c8;
   transform: rotateY(-180deg);
 }
 .checkbox-wrapper-10 .tgl-flip + .tgl-btn:before {
@@ -407,7 +415,7 @@
 .checkbox-wrapper-10 .tgl-flip:checked + .tgl-btn:after {
   transform: rotateY(0);
   left: 0;
-  background: #7FC6A6;
+  background: #4e54c8;
 }
 .checkbox-wrapper-10 .tgl-flip:checked + .tgl-btn:active:after {
   transform: rotateY(20deg);

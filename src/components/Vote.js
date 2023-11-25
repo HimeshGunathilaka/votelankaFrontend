@@ -155,7 +155,7 @@ function Vote(props) {
 
             <div className="col column-right container d-flex flex-column mt-2 align-items-center">
               <h5 className="h5 text-center text-light">Candidates</h5>
-              <div className="candidates-holder d-flex py-3 row row-cols-3 rounded container-fluid justify-content-around">
+              <div className="candidates-holder d-flex py-3 row row-cols-3 rounded container-fluid justify-content-around align-items-center">
                 {list.map((candidate, index) => {
                   return (
                     <div

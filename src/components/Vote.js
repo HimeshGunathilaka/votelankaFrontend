@@ -93,16 +93,16 @@ function Vote(props) {
         className="container-fluid mt-3 justify-content-center align-items-center d-flex flex-column"
       >
         <h2 className="mb-5 text-white">Voting form</h2>
-        <div className="container-fluid rounded py-5 my-3 d-flex flex-column container-vote">
-          <div className="container-fluid row row-cols-2">
-            <div className="container-fluid  d-flex flex-column justify-content-start mb-5">
-              <h1 className="h1 text-success">Welcome, {props.name} !</h1>
-              <p className="text-light-emphasis fs-4 mb-5">
+        <div className="container-fluid rounded py-5 my-3 d-flex align-items-center flex-column container-vote shadow">
+          <div className="container-fluid row">
+            <div className="container-fluid  d-flex flex-column justify-content-start mb-2">
+              <h4 className="h4 text-success">Welcome, {props.name} !</h4>
+              <p className="text-light-emphasis fs-6 mb-5">
                 Identity card number : {props.idNumber}
               </p>
             </div>
 
-            <div className="container-fluid mb-5 flex-column">
+            {/* <div className="container-fluid mb-5 flex-column">
               <p className="text-secondary text-hint">
                 * This is your voting area. make sure to use all your votes
                 before you leave.
@@ -114,16 +114,16 @@ function Vote(props) {
                 * Votes can be used to vote for 3 candidates from the same party
                 or different parties.
               </p>
-            </div>
+            </div> */}
           </div>
 
-          <div className="container-fluid d-flex flex-row">
-            <div className="column-left container d-flex flex-column me-5 mt-2">
+          <div className="container-fluid d-flex flex-wrap row-cols-1 row-cols-md-3 g-4 justify-content-around align-items-center">
+            <div className="col column-left container d-flex flex-column mt-2">
               <h5 className="col h5 text-light">Parties</h5>
-              <div className="col party-container rounded-pill shadow d-flex flex-row py-5">
-                <div className="container-fluid d-flex flex-column row-gap-3 party-holder">
+              <div className="col party-container rounded-pill d-flex flex-row py-4">
+                <div className="container-fluid d-flex flex-column row-gap-3 party-holder py-2">
                   <div className="container-sm d-flex flex-column">
-                    <div className="party container-sm shadow-sm rounded-circle btn btn-outline-success px-2 py-2">
+                    <div className="party container-sm shadow-sm rounded-circle px-2 py-2">
                       <img
                         src={Party}
                         alt="party 01"
@@ -131,14 +131,14 @@ function Vote(props) {
                         onClick={(e) => setParty("All")}
                       ></img>
                     </div>
-                    <p className="text-center text-success fs-6 mt-2">All</p>
+                    <p className="text-center fs-6 mt-2">All</p>
                   </div>
                   {parties.map((party, index) => (
                     <div
                       key={index}
                       className="container-sm d-flex flex-column"
                     >
-                      <div className="party container-sm shadow-sm rounded-circle btn btn-outline-success px-2 py-2">
+                      <div className="party container-sm shadow-sm rounded-circle px-2 py-2">
                         <img
                           src={Party_1}
                           alt="party 01"
@@ -146,23 +146,21 @@ function Vote(props) {
                           onClick={(e) => setParty(party.name)}
                         ></img>
                       </div>
-                      <p className="text-center text-success fs-6 mt-2">
-                        {party.name}
-                      </p>
+                      <p className="text-center fs-6 mt-2">{party.name}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            <div className="column-right px-3 container d-flex flex-column mt-2">
+            <div className="col column-right container d-flex flex-column mt-2 align-items-center">
               <h5 className="h5 text-center text-light">Candidates</h5>
-              <div className="candidates-holder d-flex py-3 row row-cols-3 shadow rounded container-fluid">
+              <div className="candidates-holder d-flex py-3 row row-cols-3 rounded container-fluid justify-content-around">
                 {list.map((candidate, index) => {
                   return (
                     <div
                       key={index}
-                      className="container btn btn-outline-success d-flex flex-column rounded shadow-sm col mx-2 my-2 candidate py-3 px-3"
+                      className="justify-content-center align-items-center container-sm d-flex flex-column rounded col mx-2 my-3 candidate py-3 px-3"
                     >
                       <img
                         src={
@@ -174,19 +172,34 @@ function Vote(props) {
                       <h1 className="fs-5 mt-3">{candidate.name}</h1>
                       <h4 className="h4">No : {candidate.no}</h4>
 
-                      <input
+                      <div className="checkbox-wrapper-10">
+                        <input
+                          className="tgl tgl-flip"
+                          id={candidate.name}
+                          type="checkbox"
+                          onChange={(event) => handleVote(event, index)}
+                        />
+                        <label
+                          className="tgl-btn"
+                          data-tg-off="Vote"
+                          data-tg-on="Voted"
+                          htmlFor={candidate.name}
+                        ></label>
+                      </div>
+
+                      {/* <input
                         type="checkbox"
                         className="btn-check"
                         id={candidate.name}
                         autoComplete="off"
                         onChange={(event) => handleVote(event, index)}
-                      ></input>
-                      <label
+                      ></input> */}
+                      {/* <label
                         className="btn btn-outline-primary px-5 mt-3"
                         htmlFor={candidate.name}
                       >
                         Vote
-                      </label>
+                      </label> */}
                     </div>
                   );
                 })}

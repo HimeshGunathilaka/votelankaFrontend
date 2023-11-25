@@ -43,7 +43,7 @@ nav ul li a {
     padding: 0;
     /* border-radius: 0.3rem; */
     /* border-image: #272829; */
-    border: 10px solid;
+    /* border: 10px solid; */
     border-image-slice: 1;
     border-width: 0px 0px 3px 0px;
     border-style: solid;

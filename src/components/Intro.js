@@ -30,13 +30,13 @@ function Intro() {
           <div className="col rounded d-flex grid-item">
             <div className="position-absolute rounded d-flex flex-row">
               <img
-                className="img-icon position-absolute"
+                className="img-icon position-absolute "
                 src={Vote}
                 alt=""
               ></img>
               <img
                 src={Lady}
-                className="img-intro position-relative rounded"
+                className="img-intro position-relative rounded img-fluid"
                 alt=""
               ></img>
             </div>

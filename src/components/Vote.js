@@ -3,6 +3,8 @@ import Candidate from "./Candidate.js";
 import Party from "../images/all_party.jpg";
 import Party_1 from "../images/party_1.jpg";
 import Party_2 from "../images/party_2.jpg";
+import Id_Icon from "../images/id-card.png";
+import Fingerprint from "../images/fingerprint.png";
 import Shashi from "../images/shashi.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import React, { useEffect, useState } from "react";
@@ -95,12 +97,19 @@ function Vote(props) {
       >
         <h2 className="mb-5 text-white">Voting form</h2>
         <div className="container-fluid rounded py-5 my-3 d-flex align-items-center flex-column container-vote shadow">
-          <div className="container-fluid row">
-            <div className="container-fluid  d-flex flex-column justify-content-start mb-2">
-              <h4 className="h4 text-white">Welcome, {props.name} !</h4>
-              <p className="fs-6 mb-5">
-                Identity card number : {props.idNumber}
-              </p>
+          <div className="container-fluid d-flex flex-row">
+            <div className="container-sm d-flex flex-column justify-content-start mb-2">
+              <h4 className="h4 text-white mb-3">Welcome, {props.name} !</h4>
+              <div className="d-flex container-sm flex-row align-items-start m-0 p-0 container-info">
+                <img src={Id_Icon} className="img-fluid me-2" />
+                <p className="fs-6 mb-5 text-start">
+                  Identity card number :{" "}
+                  <span className="ms-3">{props.idNumber}</span>
+                </p>
+              </div>
+            </div>
+            <div className="container-sm d-flex flex-column justify-content-start mb-2">
+              <p className="text-white">text info</p>
             </div>
           </div>
 
@@ -108,10 +117,10 @@ function Vote(props) {
             <div className="col column-left container d-flex flex-column mt-2">
               <h5 className="col h5 text-light">Parties</h5>
               <div className="col party-container rounded-pill d-flex flex-row py-4">
-                <div className="container-fluid d-flex flex-column row-gap-3 party-holder py-2">
-                  <div className="container-sm d-flex flex-column">
-                    <div className="party container-sm shadow-sm d-flex">
-                      <div className="party-background container-sm px-2 py-2 d-block">
+                <div className="container-sm d-flex flex-column row-gap-3 party-holder py-2">
+                  <div className="container-sm d-flex flex-column justify-content-center align-items-center">
+                    <div className="party container-sm d-flex">
+                      <div className="party-background container-sm px-2 py-2 d-flex">
                         <img
                           src={Party}
                           alt="party 01"
@@ -125,10 +134,10 @@ function Vote(props) {
                   {parties.map((party, index) => (
                     <div
                       key={index}
-                      className="container-sm d-flex flex-column"
+                      className="container-sm d-flex flex-column justify-content-center align-items-center"
                     >
-                      <div className="party container-sm shadow-sm d-flex">
-                        <div className="party-background container-sm px-2 py-2">
+                      <div className="party container-sm d-flex">
+                        <div className="party-background container-sm px-2 py-2 d-flex">
                           <img
                             src={Party_2}
                             alt="party 01"

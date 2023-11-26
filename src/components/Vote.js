@@ -2,6 +2,7 @@ import "../css/Vote.css";
 import Candidate from "./Candidate.js";
 import Party from "../images/all_party.jpg";
 import Party_1 from "../images/party_1.jpg";
+import Party_2 from "../images/party_2.jpg";
 import Shashi from "../images/shashi.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import React, { useEffect, useState } from "react";
@@ -96,25 +97,11 @@ function Vote(props) {
         <div className="container-fluid rounded py-5 my-3 d-flex align-items-center flex-column container-vote shadow">
           <div className="container-fluid row">
             <div className="container-fluid  d-flex flex-column justify-content-start mb-2">
-              <h4 className="h4 text-success">Welcome, {props.name} !</h4>
-              <p className="text-light-emphasis fs-6 mb-5">
+              <h4 className="h4 text-white">Welcome, {props.name} !</h4>
+              <p className="fs-6 mb-5">
                 Identity card number : {props.idNumber}
               </p>
             </div>
-
-            {/* <div className="container-fluid mb-5 flex-column">
-              <p className="text-secondary text-hint">
-                * This is your voting area. make sure to use all your votes
-                before you leave.
-              </p>
-              <p className="text-secondary text-hint">
-                * You have 3 votes which can use to vote to your candidates.
-              </p>
-              <p className="text-secondary text-hint">
-                * Votes can be used to vote for 3 candidates from the same party
-                or different parties.
-              </p>
-            </div> */}
           </div>
 
           <div className="container-fluid d-flex flex-wrap row-cols-1 row-cols-md-3 g-4 justify-content-around align-items-center">
@@ -123,13 +110,15 @@ function Vote(props) {
               <div className="col party-container rounded-pill d-flex flex-row py-4">
                 <div className="container-fluid d-flex flex-column row-gap-3 party-holder py-2">
                   <div className="container-sm d-flex flex-column">
-                    <div className="party container-sm shadow-sm rounded-circle px-2 py-2">
-                      <img
-                        src={Party}
-                        alt="party 01"
-                        className="rouned-circle img-fluid party-image"
-                        onClick={(e) => setParty("All")}
-                      ></img>
+                    <div className="party container-sm shadow-sm d-flex">
+                      <div className="party-background container-sm px-2 py-2 d-block">
+                        <img
+                          src={Party}
+                          alt="party 01"
+                          className="rouned-circle img-fluid party-image"
+                          onClick={(e) => setParty("All")}
+                        ></img>
+                      </div>
                     </div>
                     <p className="text-center fs-6 mt-2">All</p>
                   </div>
@@ -138,13 +127,15 @@ function Vote(props) {
                       key={index}
                       className="container-sm d-flex flex-column"
                     >
-                      <div className="party container-sm shadow-sm rounded-circle px-2 py-2">
-                        <img
-                          src={Party_1}
-                          alt="party 01"
-                          className="rouned-circle img-fluid party-image"
-                          onClick={(e) => setParty(party.name)}
-                        ></img>
+                      <div className="party container-sm shadow-sm d-flex">
+                        <div className="party-background container-sm px-2 py-2">
+                          <img
+                            src={Party_2}
+                            alt="party 01"
+                            className="rouned-circle img-fluid party-image"
+                            onClick={(e) => setParty(party.name)}
+                          ></img>
+                        </div>
                       </div>
                       <p className="text-center fs-6 mt-2">{party.name}</p>
                     </div>
@@ -169,10 +160,10 @@ function Vote(props) {
                         }
                         className="img-fluid img-candidate rounded-circle"
                       ></img>
-                      <h1 className="fs-5 mt-3">{candidate.name}</h1>
-                      <h4 className="h4">No : {candidate.no}</h4>
+                      <h4 className="fs-5 mt-4">{candidate.name}</h4>
+                      <h4 className="fs-5">No : {candidate.no}</h4>
 
-                      <div className="checkbox-wrapper-10">
+                      <div className="checkbox-wrapper-10 mt-3">
                         <input
                           className="tgl tgl-flip"
                           id={candidate.name}

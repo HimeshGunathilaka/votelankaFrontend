@@ -16,7 +16,7 @@ function Intro() {
                 process like never
                 <br /> before
               </h1>
-              <p className="text-start text-white my-4">
+              <p className="text-start my-4">
                 Once a dream is not a dream anymore. now you can
                 <br /> post your vote from wherever you are.
               </p>

@@ -213,7 +213,7 @@ function Login() {
               <div className="mb-3">
                 <label htmlFor="usernumber" className="form-label">
                   Your phone number
-                  <span className="text-white text-example ms-3">
+                  <span className="text-example ms-3">
                     ( Ex : +94771234567 )
                   </span>
                 </label>

@@ -46,13 +46,14 @@
 }
 
 .party{
+    border-radius: 50%;
     width: auto;
     height: auto;
-    border-width: 1px;
-    border-style: solid;
-    border: 1.5px solid rgba(255, 255, 255, 0.06);
     box-shadow: 0 2px 15px 1px #00000088;
     transition: 0.5s all;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .party-holder p{
@@ -64,11 +65,29 @@
 }
 
 .party:hover{
-  border-color: #5468ff;
+  --border-size: 0px;
+  --border-angle: 0turn;
+  background-image: conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+  background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)), cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-animation: bg-spin 3s linear infinite;
+          animation: bg-spin 3s linear infinite;
   box-shadow: 0 7px 50px 5px #000000aa;
   transform: scale(1.08);
   cursor: pointer;
-  /* background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%); */
+}
+
+.party-background{
+  width: auto;
+  height: auto;
+  margin: 1.5px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.06);
+}
+
+.party-background:hover{
+  background-image: conic-gradient(from var(--border-angle), #213, #112 50%, #213);
 }
 
 .party-image{
@@ -93,7 +112,7 @@
     border: 1.5px solid rgba(255, 255, 255, 0.06);
     box-shadow: 0 2px 15px 1px #00000088;
     transition: 0.5s all;
-    color: white;
+    color: gray;
 }
 
 .candidate::before{
@@ -101,9 +120,35 @@
 }
 
 .candidate:hover{
-  border-color: #5468ff;
+  color: white;
   box-shadow: 0 7px 50px 5px #000000aa;
   transform: scale(1.08);
+  --border-size: 1.5px;
+  --border-angle: 0turn;
+  background-image: conic-gradient(from var(--border-angle), #213, #112 50%, #213), conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+  background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)), cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-animation: bg-spin 3s linear infinite;
+          animation: bg-spin 3s linear infinite;
+}
+
+@-webkit-keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
 }
 
 .container-vote{
@@ -113,6 +158,10 @@
 	backdrop-filter: blur(15px);
   border: 1.5px solid rgba(255, 255, 255, 0.06);
 	border-radius: 8px;
+}
+
+.container-vote p{
+  color:gray;
 }
 
 .container-submit{

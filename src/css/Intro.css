@@ -5,6 +5,10 @@
     height: 25em;
 }
 
+.grid-item p{
+  color: white;
+}
+
 .img-intro{
     width: auto;
     height: auto;

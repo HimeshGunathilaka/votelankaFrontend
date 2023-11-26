@@ -21,7 +21,7 @@ function Team() {
               to make this dream come true.
             </div>
           </div>
-          <div className="row row-cols-1 row-cols-md-3 g-4 container text-white justify-content-center team-holder">
+          <div className="row row-cols-1 row-cols-md-3 g-4 container text-white justify-content-around team-holder">
             <div className="col flex-column d-flex px-2 py-2 team-member">
               <div class="main">
                 <img
@@ -29,8 +29,8 @@ function Team() {
                   alt="lead-programmer"
                   className="img-fluid img-member"
                 ></img>
-                <h4 className="mt-3 mb-1">Kavinda Himesh</h4>
-                <p className="p-2 text-center">
+                <h4 className="mt-4 mb-1">Kavinda Himesh</h4>
+                <p className="text-center mt-3">
                   Lead programmer / Back-end developer
                 </p>
               </div>
@@ -43,8 +43,8 @@ function Team() {
                   alt="lead-programmer"
                   className="img-fluid img-member"
                 ></img>
-                <h4 className="mt-3 mb-1">Dinesha Dulakshi</h4>
-                <p className="p-2 text-center">
+                <h4 className="mt-4 mb-1">Dinesha Dulakshi</h4>
+                <p className="text-center mt-3">
                   Project manager / Front-end developer
                 </p>
               </div>
@@ -57,8 +57,8 @@ function Team() {
                   alt="lead-programmer"
                   className="img-fluid img-member"
                 ></img>
-                <h4 className="mt-3 mb-1">Fahma Rasik</h4>
-                <p className="p-2 text-center">
+                <h4 className="mt-4 mb-1">Fahma Rasik</h4>
+                <p className="text-center mt-3">
                   Business Analyst / Front-end developer
                 </p>
               </div>
@@ -71,8 +71,8 @@ function Team() {
                   alt="lead-programmer"
                   className="img-fluid img-member"
                 ></img>
-                <h4 className="mt-3 mb-1">Shashikala Dilrukshi</h4>
-                <p className="p-2 text-center">
+                <h4 className="mt-4 mb-1">Shashikala Dilrukshi</h4>
+                <p className="text-center mt-3">
                   Quality Analyst / Back-end developer
                 </p>
               </div>

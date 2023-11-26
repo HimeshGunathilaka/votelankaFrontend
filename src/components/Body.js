@@ -19,7 +19,21 @@ function Body() {
           {admin ? <AdminPanel /> : <div></div>}
           <Navigator />
         </div>
-        <div class="blob"></div>
+        {/* <div class="blob"></div> */}
+        <div class="area">
+          <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
       </div>
     </>
   );

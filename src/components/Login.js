@@ -36,8 +36,8 @@ function Login() {
     console.log(voter.name);
     if (!(voter.name === undefined)) {
       toast.success("Your identity was confirmed !");
-      setOtpHide("d-flex");
-      // setUser(1);
+      // setOtpHide("d-flex");
+      setUser(1);
       // onCaptchaVerify();
       // sendOtp();
     }
@@ -186,7 +186,7 @@ function Login() {
           <h2 className={`text-white mb-5 ${loginHide}`}>Registration form</h2>
 
           <div className={`container-sm login-container my-3 ${loginHide}`}>
-            <form className="container-sm gap-3 px-5 py-5">
+            <form className="container-sm gap-3 px-5 py-5 shadow">
               <div className="mb-3">
                 <label htmlFor="userid" className="form-label">
                   Your identity card number
@@ -213,7 +213,7 @@ function Login() {
               <div className="mb-3">
                 <label htmlFor="usernumber" className="form-label">
                   Your phone number
-                  <span className="text-white text-example ms-3">
+                  <span className="text-example ms-3">
                     ( Ex : +94771234567 )
                   </span>
                 </label>
@@ -255,7 +255,7 @@ function Login() {
           </div>
 
           <div
-            className={`otp-container container-sm otp-container d-flex flex-column my-3 px-5 py-5 ${otpHide}`}
+            className={`otp-container shadow container-sm otp-container d-flex flex-column my-3 px-5 py-5 ${otpHide}`}
           >
             <label htmlFor="otp-input text-dark">Enter OTP code</label>
             <OtpInput

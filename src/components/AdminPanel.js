@@ -175,7 +175,7 @@ function AdminPanel() {
         >
           <h2 className="text-white mb-5">Admin Login</h2>
           <div className="container-sm admin-container my-3">
-            <form className="container-sm gap-3 shadow-lg bg-white rounded px-5 py-5">
+            <form className="container-sm gap-3 px-5 py-5 shadow">
               <div className="mb-3">
                 <label htmlFor="admin_username" className="form-label">
                   Admin Username
@@ -195,9 +195,7 @@ function AdminPanel() {
                   />
                 </div>
                 <div className="form-text" id="basic-addon4">
-                  <p className={`text-danger ${warningUsernameState}`}>
-                    {warningUsername}
-                  </p>
+                  <p className={`${warningUsernameState}`}>{warningUsername}</p>
                 </div>
               </div>
               <div className="mb-3">
@@ -219,9 +217,7 @@ function AdminPanel() {
                   />
                 </div>
                 <div className="form-text" id="basic-addon4">
-                  <p className={`text-danger ${warningPasswordState}`}>
-                    {warningPassword}
-                  </p>
+                  <p className={`${warningPasswordState}`}>{warningPassword}</p>
                 </div>
               </div>
               <button

@@ -37,7 +37,7 @@ export default function Header() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div id="navbarSupportedContent" className="collapse navbar-collapse">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 column-gap-3">
+            <ul className="navbar-nav ms-auto me-5 mb-2 mb-lg-0 column-gap-5">
               <li className="nav-item">
                 <a id="header-team" href="#team">
                   Team
